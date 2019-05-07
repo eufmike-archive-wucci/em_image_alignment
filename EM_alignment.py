@@ -61,11 +61,11 @@ imip_1, imip_2, imReg, h = alignImages(im1, im2)
 
 #%%
 imip_1_pil = Image.fromarray(imip_1)
-imip_1_pil.show()
+imip_1_pil.show(title = 'imip_1')
 imip_2_pil = Image.fromarray(imip_2)
-imip_2_pil.show()
+imip_2_pil.show(title = 'imip_2')
 imReg_pil = Image.fromarray(imReg)
-imReg_pil.show()
+imReg_pil.show(title = 'imip_1_reg')
 
 
 #%%
