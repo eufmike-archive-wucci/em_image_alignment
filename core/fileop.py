@@ -14,8 +14,7 @@ def ListFiles(path, extension = None):
 				filelist.append(file_name_base)
 				fileabslist.append(filepath_tmp)
 	
-	return {'filelist': filelist,
-			'fileabslist': fileabslist}
+	return filelist, fileabslist
 
 def DirCheck(targetpaths):
 	"""

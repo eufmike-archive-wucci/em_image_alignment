@@ -19,28 +19,24 @@ from core.img import openimage, AlignImages, AlignImagesStack, AlignImages_Affin
 # ========================================================
 
 #%%
+
 path = '/Volumes/LaCie_DataStorage/Asensio_Lab'
-raw_dir = 'raw'
-sub_dir = 'KO_2'
-raw_path = os.path.join(path, raw_dir, sub_dir)
-print(raw_path)
+raw_dir = 'output'
+sub_dir = 'KO_2_reordered_rename'
+ippath = os.path.join(path, raw_dir, sub_dir)
+print(ippath)
 
-op_dir = 'output'
+dircheck = []
+op_dir = 'alignment_opencv_01'
+opmatch_dir = 'alignment_match_opencv_01'
 oppath = os.path.join(path, op_dir, sub_dir)
+oppath_match = os.path.join(path, opmatch_dir, sub_dir)
+dircheck.append(oppath)
+dircheck.append(oppath_match)
 
-DirCheck(oppath)
-
-#%%
-filename, filepath = ListFiles(raw_path, '.tif')
-print(filepath)
-
-#%%
-cleaned_filelist = SortByFolder(filepath, 'Tile_')
-print([item.filename for item in cleaned_filelist])
+DirCheck(dircheck)
 
 #%%
-
-# copy files to the new output folder
-for item in cleaned_filelist:
-    print(item.filename)
-    copyfile(item.filepath, os.path.join(oppath, 'image_' + str(item.index).zfill(4) + '.tif'))
+factor = 1/16
+center = 50
+AlignImagesStack_Affine(ippath, oppath, oppath_match, factor, centerimg = center, ext = '.tif')
