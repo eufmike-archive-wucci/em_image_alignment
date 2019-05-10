@@ -34,7 +34,7 @@ DirCheck(oppath)
 
 path = '/Volumes/LaCie_DataStorage/Asensio_Lab'
 raw_dir = 'alignment_opencv_01_std_8bit'
-sub_dir = 'rescue'
+sub_dir = 'KO_2_reordered_rename'
 ippath = os.path.join(path, raw_dir, sub_dir)
 print(ippath)
 
@@ -57,9 +57,8 @@ AlignImagesStack(ippath, oppath, oppath_match, factor, centerimg = center, ext =
 
 #%%
 factor = 1/16
-center = 61
-startimg = 60
-endimg = 68
-ROI = [5153, 4618, 2048, 2048]
+center = 70
+startimg = 70
+endimg = 75
 AlignImagesStack(ippath, oppath, oppath_match, factor, ROI = None,
-                    centerimg = center, startimg = startimg, endimg = endimg, ext = '.tif', GOOD_MATCH_PERCENT = 0.15)
+                    centerimg = center, startimg = startimg, endimg = endimg, ext = '.tif', GOOD_MATCH_PERCENT = 0.1)

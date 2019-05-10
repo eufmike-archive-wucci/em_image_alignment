@@ -78,4 +78,9 @@ def SortByFolder(ipfilepaths, inputpattern = None):
 
     return cleaned_filelist
 
-
+def ListFolders(path):
+	dirlist = []
+	for dir_name in os.listdir(path):
+		if (not dir_name.startswith('.')):
+			dirlist.append(dir_name)
+	return dirlist

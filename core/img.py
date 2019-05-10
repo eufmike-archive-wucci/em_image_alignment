@@ -47,7 +47,7 @@ def AlignImages(im1_path, im2_path, factor, ROI, MAX_FEATURES = 1000, GOOD_MATCH
     imip_1 = cv2.resize(im1array_roi, dsize = None, fx = factor, fy = factor, interpolation=cv2.INTER_CUBIC)
     imip_2 = cv2.resize(im2array_roi, dsize = None, fx = factor, fy = factor, interpolation=cv2.INTER_CUBIC)
     
-    orb = cv2.ORB_create(MAX_FEATURES)
+    orb = cv2.ORB_create(nfeatures = MAX_FEATURES, patchSize = 300)
     keypoints1, descriptors1 = orb.detectAndCompute(imip_1, None)
     keypoints2, descriptors2 = orb.detectAndCompute(imip_2, None)
 

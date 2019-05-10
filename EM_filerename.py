@@ -5,7 +5,7 @@ import cv2
 from PIL import Image
 import pprint
 from shutil import copyfile
-from core.fileop import DirCheck, ListFiles, SplitAll, SortByFolder
+from core.fileop import DirCheck, ListFiles, ListFolders, SplitAll, SortByFolder
 
 #%%
 path = '/Volumes/LaCie_DataStorage/Asensio_Lab'
