@@ -15,13 +15,13 @@ from core.imgstitching import IdxConverter
 
 #%%
 path = '/Volumes/LaCie_DataStorage/Asensio_Lab'
-wd_dir = 'TEM_stitching_test'
+wd_dir = 'TEM_stitching'
 ip_dir = 'output'
 ippath = os.path.join(path, wd_dir, ip_dir)
 print(ippath)
 
 dircheck = []
-op_dir = 'ouput_reordered'
+op_dir = 'output_reordered'
 oppath = os.path.join(path, wd_dir, op_dir)
 dircheck.append(oppath)
 DirCheck(dircheck)
@@ -36,16 +36,20 @@ DimData['filename'] = DimData['filename'].astype(str)
 DimData.dtypes
 #%%
 for i in ListFolders(ippath):
+    i = 'rescue'
     ippath_tmp = os.path.join(ippath, i)
     oppath_tmp = os.path.join(oppath, i)
     DirCheck(oppath_tmp)
 
     dimdata = DimData[DimData['group'] == i]
+    dimdata = dimdata.reset_index()
     display(dimdata)
     
     for j in ListFolders(ippath_tmp):
+        j = 'img_0008'
         ippath_img_tmp = os.path.join(ippath_tmp, j)
         oppath_img_tmp = os.path.join(oppath_tmp, j)
+        print(ippath_img_tmp)
         DirCheck(oppath_img_tmp)
         print(j)
         m = re.search('^img_(0*[1-9][0-9]*)$', j)
@@ -62,12 +66,19 @@ for i in ListFolders(ippath):
         
         filelist, fileabslist = ListFiles(ippath_img_tmp, '.tif') 
         print(filelist)
-
+        print(ippath_img_tmp)
+        # tile_dim = (10, 8)
+        print(tile_dim)
         for idx in range(len(filelist)):
+            print(idx)
+            IdxConverter(idx, tile_dim, box_dim)
             ip_filename = j + '_' + str(idx).zfill(4) + '.tif'
             op_filename = j + '_' + str(IdxConverter(idx, tile_dim, box_dim)).zfill(4) + '.tif'
             print(ip_filename)
             ip_path = os.path.join(ippath, i, j, ip_filename)
             print(op_filename)
             op_path = os.path.join(oppath, i, j, op_filename)
-            copyfile(ip_path, op_path)
+            # copyfile(ip_path, op_path)
+            
+        break
+    break

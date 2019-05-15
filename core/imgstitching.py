@@ -30,7 +30,7 @@ def IdxConverter(idx, tile_dim, box_dim):
     vert_incom_box = x_incom_box * y_com_box
     hori_incom_box = y_incom_box * x_com_box
     xy_rem = x_incom_box * y_incom_box
-    '''
+    
     print('x_com_box: {}'.format(x_com_box))
     print('x_incom_box: {}'.format(x_incom_box))
     print('y_com_box: {}'.format(y_com_box))
@@ -42,7 +42,7 @@ def IdxConverter(idx, tile_dim, box_dim):
     print('vert_incom_box: {}'.format(vert_incom_box))
     print('hori_incom_box: {}'.format(hori_incom_box))
     print('xy_rem: {}'.format(xy_rem))
-    '''
+    
     area_com = x_com_box * y_com_box * box_size
     area_incom_hori = hori_incom_box * y_rem * box_x
     area_incom_vert = vert_incom_box * x_rem * box_y
@@ -89,3 +89,4 @@ def IdxConverter(idx, tile_dim, box_dim):
     return idx_new
 
     
+def ScanStitching():
