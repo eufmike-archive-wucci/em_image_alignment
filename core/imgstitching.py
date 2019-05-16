@@ -87,6 +87,3 @@ def IdxConverter(idx, tile_dim, box_dim):
     
     idx_new = idx_absidx_x * f_y + idx_absidx_y
     return idx_new
-
-    
-def ScanStitching():
